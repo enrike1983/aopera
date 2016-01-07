@@ -1,0 +1,43 @@
+@font-face {
+  font-family: RennieBold;
+  src: url(../fonts/rennie_bold.ttf);
+  font-weight:100;
+}
+
+.navbar {
+  min-height:90px;
+  .navbar-nav {
+    a {
+      font-family: RennieBold;
+      font-size:18px;
+      color: #fff;
+      padding: 35px 0px 20px 16px;
+      @media(min-width:993px){
+        padding: 35px 0px 20px 50px;
+      }
+    }
+  }
+  .navbar-header {
+    button {
+      margin-top: 25px;
+    }
+  }
+}
+
+.navbar-inverse {
+  background: #000;
+  .logo {
+    max-height:50px;
+    margin-top: 10px;
+    @media(min-width:768px){
+      margin-top: 0px;
+      max-height:70px;
+    }
+  }
+  .navbar-brand {
+    padding: 13px 0px 0px 8px;
+    height: 90px;
+  }
+}
+
+
