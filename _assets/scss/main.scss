@@ -24,8 +24,21 @@ body {
         padding: 35px 0px 20px 50px;
       }
     }
+    .social-list-element {
+      display: block;
+      @media(min-width:768px){
+        display:none;
+      }
+      a {
+        float: left;
+      }
+    }
   }
   .navbar-right {
+    display: none;
+    @media(min-width:1200px){
+      display: block;
+    }
     a {
       padding: 35px 0px 20px 20px;
       i {
@@ -37,6 +50,16 @@ body {
   .navbar-header {
     button {
       margin-top: 25px;
+    }
+  }
+
+  .navbar-collapse {
+    max-height:500px;
+    li {
+      border-bottom:1px solid #191919;
+      @media(min-width:768px){
+        border-bottom:none;
+      }
     }
   }
 }
