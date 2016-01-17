@@ -7,6 +7,37 @@
 body {
   background: #030303 url(../img/bg.jpg) fixed center 5rem repeat-y;
   padding-top: 90px;
+  font-family:arial,helvetica,sans-serif;
+  color: #3f3f3f;
+  hr {
+    border-top: 1px solid #333;
+  }
+  .section-header {
+    h2 {
+      font-family: RennieBold;
+      font-size:40px;
+      color: #fff;
+      font-weight: lighter;
+    }
+  }
+  .container {
+    margin: 0 auto;
+    max-width: 994px;
+    position: relative;
+    .news-title {
+      font-size:18px;
+      color: #9d9d9d;
+    }
+    .news-date {
+      color: #C81D21;
+    }
+    .tourdate-container {
+      border-style: solid;
+      border-width: 1px;
+      padding: .6em;
+      background-color: #272727;
+    }
+  }
 }
 
 .navbar {
@@ -15,6 +46,7 @@ body {
     a {
       font-family: RennieBold;
       font-size:18px;
+      font-weight: bold;
       color: #fff;
       padding: 15px;
       @media(min-width:768px){
@@ -36,6 +68,7 @@ body {
   }
   .navbar-right {
     display: none;
+    padding-right:20px;
     @media(min-width:1200px){
       display: block;
     }
@@ -80,4 +113,53 @@ body {
   }
 }
 
+.carousel-inner {
+  margin-bottom:15px;
+}
 
+.tour-left {
+  border: 1px solid #505050;
+  background-color: #202020;
+  color: grey;
+  padding: 0 5px 0 5px;
+}
+
+.tour-right {
+  .location {
+    font-style: normal;
+    font-weight: normal;
+    font-size:22px;
+    margin-top:0;
+  }
+  .date {
+    font-style: normal;
+    color: gray;
+    margin-top: .6em;
+    font-weight: normal;
+
+  }
+  .readmore {
+
+  }
+}
+
+.tour-element {
+  margin-bottom:30px;
+}
+
+.tour-month {
+  text-align: center;
+  margin-bottom:5px;
+  margin-top: 5px;
+}
+.tour-day {
+  font-size: 2em;
+  color: white;
+  line-height: 1em;
+  text-align: center;
+  margin-bottom:5px;
+}
+.tour-year {
+  text-align: center;
+  margin-bottom: 5px;
+}
