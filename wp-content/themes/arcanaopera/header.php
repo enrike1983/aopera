@@ -10,7 +10,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title></title>
+	<title><?php if ( is_category() ) {
+			echo 'Category Archive for &quot;'; single_cat_title(); echo '&quot; | '; bloginfo( 'name' );
+		} elseif ( is_tag() ) {
+			echo 'Tag Archive for &quot;'; single_tag_title(); echo '&quot; | '; bloginfo( 'name' );
+		} elseif ( is_archive() ) {
+			wp_title(''); echo ' Archive | '; bloginfo( 'name' );
+		} elseif ( is_search() ) {
+			echo 'Search for &quot;'.esc_html($s).'&quot; | '; bloginfo( 'name' );
+		} elseif ( is_home() || is_front_page() ) {
+			bloginfo( 'name' ); echo ' | '; bloginfo( 'description' );
+		}  elseif ( is_404() ) {
+			echo 'Error 404 Not Found | '; bloginfo( 'name' );
+		} elseif ( is_single() ) {
+			wp_title('');
+		} else {
+			echo wp_title( ' | ', 'false', 'right' ); bloginfo( 'name' );
+		} ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -27,8 +43,10 @@
 	<link rel="stylesheet" href="<?php echo get_bloginfo('template_directory') ?>/css/main.css">
 
 	<script src="<?php echo get_bloginfo('template_directory') ?>/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+	<?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -51,24 +69,24 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><img class="logo" src="<?php echo get_bloginfo('template_directory') ?>/img/logo.jpg"></a>
+			<a class="navbar-brand" href="<?php echo get_home_url()?>"><img class="logo" src="<?php echo get_bloginfo('template_directory') ?>/img/logo.jpg"></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li>
-					<a href="#">Band</a>
+					<a href="<?php echo get_permalink( get_page_by_path( 'band' )) ?>">Band</a>
 				</li>
 				<li>
-					<a href="#">Discography</a>
+					<a href="<?php echo get_permalink( get_page_by_path( 'new-releases' )) ?>">Discography</a>
 				</li>
 				<li>
-					<a href="#">Tourdates</a>
+					<a href="<?php echo get_permalink( get_page_by_path( 'tourdates' )) ?>">Tourdates</a>
 				</li>
 				<li>
-					<a href="#">Media</a>
+					<a href="<?php echo get_permalink( get_page_by_path( 'media' )) ?>">Media</a>
 				</li>
 				<li>
-					<a href="#">Contact</a>
+					<a href="<?php echo get_permalink( get_page_by_path( 'contacts' )) ?>">Contact</a>
 				</li>
 				<li>
 					<a href="#">Shop</a>

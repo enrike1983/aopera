@@ -5,6 +5,20 @@
 }
 
 body {
+  .grey-header {
+    font-family: RennieBold;
+  }
+  a {
+    color: #C81D21;
+  }
+  a:hover {
+    color: #C81D21;
+    text-decoration: underline;
+  }
+  .small-margin-list {
+    padding-left:7px;
+    margin-left: 7px;
+  }
   background: #030303 url(../img/bg.jpg) fixed center 5rem repeat-y;
   padding-top: 90px;
   font-family:arial,helvetica,sans-serif;

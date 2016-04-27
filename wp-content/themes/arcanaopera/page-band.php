@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Generic
+Template Name: Band
 */
 ?>
 <?php get_header(); ?>
@@ -16,9 +16,12 @@ Template Name: Generic
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <img width="100%" src="<?php echo get_bloginfo('template_directory')?>/img/band/arcana_opera.jpg" />
+                    <hr>
                     <?php if (have_posts()) : while (have_posts()) : the_post();?>
                         <?php echo the_content() ?>
                     <?php endwhile; endif; ?>
+                    <?php get_template_part('_band-list') ?>
                 </div>
             </div>
         </div>

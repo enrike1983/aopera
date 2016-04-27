@@ -1,3 +1,19 @@
+
+<?php $gig_query = new WP_Query(array(
+	'post_status' => 'publish',
+	'post_type' => 'gigs',
+	'meta_key' => 'data_editoriale',
+	'orderby' => 'meta_value_num',
+	'order' => 'DESC',
+	'relation' => 'AND',
+	'meta_query' => array(
+		'key' => 'data_editoriale',
+		'value' => date('YmdHi'),
+		'compare' => '>='
+	),
+	'posts_per_page' => 5
+)); ?>
+
 <div class="col-md-4 ">
 	<div class="row">
 		<header class="col-lg-12 section-header">
@@ -16,72 +32,38 @@
 			<hr>
 		</header>
 	</div>
-	<div class="row tour-element">
-		<div class="col-xs-3">
-			<div class="tour-left">
-				<div class="tour-month">May</div>
-				<div class="tour-day">14</div>
-				<div class="tour-year">2016</div>
-			</div>
-		</div>
-		<div class="col-xs-9">
-			<div class="tour-right">
-				<h5 class="location">
-					London, United Kingdom
-				</h5>
-				<div class="date">
-					Islington Albert Hall
+	<?php if($gig_query->have_posts()): ?>
+		<?php
+		while($gig_query->have_posts()): $gig_query->the_post(); ?>
+
+			<div class="row tour-element">
+				<div class="col-xs-3">
+					<div class="tour-left">
+						<div class="tour-month"><?php echo get_post_meta(get_the_ID(), 'data_editoriale_month', true) ?></div>
+						<div class="tour-day"><?php echo get_post_meta(get_the_ID(), 'data_editoriale_day', true) ?></div>
+						<div class="tour-year"><?php echo get_post_meta(get_the_ID(), 'data_editoriale_year', true) ?></div>
+					</div>
 				</div>
-				<div class="readmore">
-					Details / Tickets
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row tour-element">
-		<div class="col-xs-3">
-			<div class="tour-left">
-				<div class="tour-month">May</div>
-				<div class="tour-day">14</div>
-				<div class="tour-year">2016</div>
-			</div>
-		</div>
-		<div class="col-xs-9">
-			<div class="tour-right">
-				<h5 class="location">
-					London, United Kingdom
-				</h5>
-				<div class="date">
-					Islington Albert Hall
-				</div>
-				<div class="readmore">
-					Details / Tickets
+				<div class="col-xs-9">
+					<div class="tour-right">
+						<h5 class="location">
+							<?php echo get_the_title() ?>
+						</h5>
+						<div class="date">
+							<?php echo get_the_content() ?>
+						</div>
+						<div class="readmore">
+							<a target="_blank" href="<?php echo get_the_excerpt()?>">Details / Tickets</a>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="row tour-element">
-		<div class="col-xs-3">
-			<div class="tour-left">
-				<div class="tour-month">May</div>
-				<div class="tour-day">14</div>
-				<div class="tour-year">2016</div>
-			</div>
-		</div>
-		<div class="col-xs-9">
-			<div class="tour-right">
-				<h5 class="location">
-					London, United Kingdom
-				</h5>
-				<div class="date">
-					Islington Albert Hall
-				</div>
-				<div class="readmore">
-					Details / Tickets
-				</div>
-			</div>
-		</div>
-	</div>
+
+			<?php
+		endwhile;
+		?>
+	<?php endif; ?>
+	<?php wp_reset_query();?>
 	<div class="row">
 		<header class="col-lg-12 section-header">
 			<h2>
@@ -99,7 +81,7 @@
 		<div class="col-md-12">
 			<div class="fb-page"
 				 data-href="https://www.facebook.com/alexanderwyrd.arcanaopera"
-				 data-width="380"
+				 data-width="300"
 				 data-hide-cover="false"
 				 data-show-facepile="false"
 				 data-show-posts="false"></div>

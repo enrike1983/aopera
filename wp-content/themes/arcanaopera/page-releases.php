@@ -1,24 +1,57 @@
 <?php
 /*
-Template Name: Album Releases
+Template Name: Discography
 */
 ?>
-
 <?php get_header(); ?>
-<div class="row main-content">
-    <aside id="sidebar" class="large-8 columns">
-        <?php if ( have_posts() ) : ?>
 
-            <?php do_action('foundationPress_before_content'); ?>
+<?php $releases_query = new WP_Query(array(
+    'post_status' => 'publish',
+    'post_type' => 'releases',
+    'meta_key' => 'data_editoriale',
+    'orderby' => 'meta_value_num',
+    'order' => 'DESC',
+));
+?>
 
-            <?php get_template_part( 'content-releases', get_post_format() ); ?>
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                <header class="col-lg-12 section-header">
+                    <h2><?php the_title() ?></h2>
+                    <hr>
+                </header>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <?php
+                    if($releases_query->have_posts()):
+                        while($releases_query->have_posts()): $releases_query->the_post(); ?>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <?php $url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID()) ); ?>
+                                    <img width="300" src="<?php echo $url; ?>" />
+                                </div>
+                                <div class="col-md-6">
+                                    <h4><?php the_title() ?></h4>
+                                    <?php the_content() ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <?php
+                        endwhile;
+                    endif;
+                    wp_reset_query();
+                    ?>
+                </div>
+            </div>
+        </div>
 
-            <?php do_action('foundationPress_before_pagination'); ?>
+        <?php get_sidebar() ?>
 
-        <?php endif;?>
-    </aside>
-    <div class="large-4 columns" role="main">
-        <?php echo get_template_part('parts/right-column') ?>
     </div>
-</div>
+    <hr>
+</div> <!-- /container -->
 <?php get_footer(); ?>
