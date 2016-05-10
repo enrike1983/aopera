@@ -1,5 +1,4 @@
 <hr>
-Arcana Opera are:<br><br>
 <ul class="small-margin-list">
     <li><a href="<?php echo get_permalink( get_page_by_path( 'band/alexander-wyrd' )) ?>">Alexander Wyrd</a></li>
     <li><a href="<?php echo get_permalink( get_page_by_path( 'band/stefano-jag-masin' )) ?>">Stefano "Jag" Masin</a></li>
