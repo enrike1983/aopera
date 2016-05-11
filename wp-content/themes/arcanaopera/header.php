@@ -89,7 +89,7 @@
 					<a href="<?php echo get_permalink( get_page_by_path( 'contacts' )) ?>">Contact</a>
 				</li>
 				<li>
-					<a href="#">Shop</a>
+					<a target="_blank" href="https://arcanaopera.bigcartel.com">Shop</a>
 				</li>
 				<li class="social-list-element">
 					<a target="_blank" href="https://it-it.facebook.com/alexanderwyrd.arcanaopera/"><i class="fa fa-lg fa-facebook"></i></a>
