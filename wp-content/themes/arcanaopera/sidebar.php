@@ -4,7 +4,7 @@
 	'post_type' => 'gigs',
 	'meta_key' => 'data_editoriale',
 	'orderby' => 'meta_value_num',
-	'order' => 'DESC',
+	'order' => 'ASC',
 	'relation' => 'AND',
 	'meta_query' => array(
 		'key' => 'data_editoriale',
@@ -52,9 +52,11 @@
 						<div class="date">
 							<?php echo get_the_content() ?>
 						</div>
-						<div class="readmore">
-							<a target="_blank" href="<?php echo get_the_excerpt()?>">Details / Tickets</a>
-						</div>
+                        <?php if(get_the_excerpt()): ?>
+                            <div class="readmore">
+                                <a target="_blank" href="<?php echo get_the_excerpt()?>">Details / Tickets</a>
+                            </div>
+                        <?php endif?>
 					</div>
 				</div>
 			</div>
